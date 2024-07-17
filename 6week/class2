@@ -1,0 +1,83 @@
+class Node3{
+    int Data;
+    Node Next;
+
+    Node3(int Data){
+        this.Data=Data;
+        Next=null;
+    }
+}
+public class LinkedListMiddleElement {
+    Node Head;
+
+    LinkedListMiddleElement(){
+        Head=null;
+    }
+
+    void EnterAtTheEnd(int Data){
+        Node NewNode=new Node(Data);
+        if (Head==null){
+            Head=NewNode;
+            return;
+        }
+
+        Node Last=Head;
+        while (Last.Next!=null){
+            Last=Last.Next;
+        }
+        Last.Next=NewNode;
+    }
+
+    void PrintData(){
+        Node Last=Head;
+        while (Last!=null){
+            System.out.println(Last.Data);
+            Last=Last.Next;
+        }
+    }
+    int length(){
+        int Count=0;
+        Node last=Head;
+        while (last!=null){
+            Count++;
+            last=last.Next;
+        }
+        return Count;
+    }
+    int MiddleElement(){
+        int LenLink=length()/2;
+        int count=0;
+        Node Last=Head;
+        while (Last!=null && count!=LenLink){
+            Last=Last.Next;
+            count++;
+        }
+        return Last.Data;
+    }
+
+    int MiddleElement1(){
+        Node slow=Head;
+        Node fast=Head;
+
+        while (slow!=null && fast!=null && fast.Next!=null){
+            slow=slow.Next;
+            fast=fast.Next.Next;
+        }
+        return slow.Data;
+    }
+
+    public static void main(String[] args) {
+
+        LinkedListMiddleElement obj=new LinkedListMiddleElement();
+        obj.EnterAtTheEnd(10);
+        obj.EnterAtTheEnd(20);
+        obj.EnterAtTheEnd(30);
+        obj.EnterAtTheEnd(40);
+        obj.EnterAtTheEnd(50);
+        System.out.println("Length of LinkedList "+obj.length());
+        System.out.println("Middle of LinkedList "+obj.MiddleElement());
+        System.out.println("Middle of LinkedList 1: "+obj.MiddleElement1());
+        obj.PrintData();
+
+    }
+}
