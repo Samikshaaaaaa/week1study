@@ -1,0 +1,27 @@
+package Stack;
+import java.util.Stack;
+
+public class stackBalanceP {
+    public static void main(String[] args) {
+        String str = "[()()]";
+        Stack<Character> st = new Stack<>();
+        boolean flag = true;
+        for (int i=0; i<str.length(); i++){
+            if (str.charAt(i) == '[' || str.charAt(i) == '{' || str.charAt(i) == '('){
+                st.push(str.charAt(i));
+            }else {
+                if (!st.isEmpty()) {
+                    char ch = str.charAt(i);
+                    char a = st.pop();
+                    if ((ch == '}' && a == '{') || (ch == ')' && a == '(') || (ch == ']' && a == '[')) flag = true;
+                    else {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (flag == true) System.out.println("It is balanced");
+        else System.out.println("It is not balanced");
+    }
+}
