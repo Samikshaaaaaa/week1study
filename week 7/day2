@@ -1,0 +1,26 @@
+package Stack;
+
+import java.util.Stack;
+
+public class StackRevWord {
+
+    public static void main(String[] args) {
+        String ans = "";
+        String str = "Hello, How are you.";
+        Stack<Character> st = new Stack<>();
+        for (int i=0; i<str.length(); i++){
+            if (str.charAt(i) !=  ' '){
+                st.push(str.charAt(i));
+            }else{
+                while (!st.isEmpty()){
+                    ans = ans + st.pop();
+                }
+                ans = ans +  " ";
+            }
+        }
+        while (!st.isEmpty()){
+            ans = ans + st.pop();
+        }
+        System.out.println(ans.trim());
+    }
+}
