@@ -1,0 +1,29 @@
+package HashMap;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ArrMaxFre {
+    public static void main(String[] args){
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        int arr[]= {10,20,30,20,20,10,20};
+
+        for(int i=0;i<arr.length;i++){
+           if(hm.containsKey(arr[i])){
+             int fre = hm.get(arr[i]);
+             fre++;
+             hm.put(arr[i],fre);
+           }else{
+               hm.put(arr[i],1);
+           }}
+
+           int max= 0, res= -1;
+           for(Map.Entry<Integer,Integer> hmt: hm.entrySet()){
+               if(hmt.getValue()>max){
+               max=hmt.getValue();
+               res=hmt.getKey();
+           }
+
+               }
+             System.out.println(res);
+           }
+        }
