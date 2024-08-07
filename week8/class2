@@ -1,0 +1,20 @@
+package HashSet;
+import java.util.HashSet;
+public class HashSetEg {
+    public static void main(String[] args){
+        HashSet<Integer> st = new HashSet<>();
+        st.add(1);
+        st.add(2);
+        st.add(3);
+        st.add(4);
+        st.add(7);
+        st.add(8);
+        st.remove(2);
+        System.out.println(st.contains(4));
+        System.out.println(st);
+
+        for(Integer st1 : st){
+            System.out.println(st1);
+        }
+    }
+}
