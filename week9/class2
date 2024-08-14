@@ -1,0 +1,83 @@
+class Node {
+    int key;
+    Node left, right;
+
+    public Node(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+
+// A class to represent the Binary Search Tree
+class BinarySearchTree {
+    // Root node of the BST
+    Node root;
+
+    // Constructor
+    BinarySearchTree() { 
+        root = null; 
+    }
+
+    // Method to insert a new node with the given key
+    void insert(int key) {
+        root = insertRec(root, key);
+    }
+
+    // A recursive function to insert a new key in the BST
+    Node insertRec(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+        return root;
+    }
+
+    // Method to find the Lowest Common Ancestor (LCA) of two nodes n1 and n2
+    Node findLCA(Node root, int n1, int n2) {
+        if (root == null) {
+            return null;
+        }
+
+        // If both n1 and n2 are smaller than root, then LCA lies in the left subtree
+        if (n1 < root.key && n2 < root.key) {
+            return findLCA(root.left, n1, n2);
+        }
+
+        // If both n1 and n2 are greater than root, then LCA lies in the right subtree
+        if (n1 > root.key && n2 > root.key) {
+            return findLCA(root.right, n1, n2);
+        }
+
+        // If one key is smaller and the other is greater, then this node is the LCA
+        return root;
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(20);
+        tree.insert(8);
+        tree.insert(22);
+        tree.insert(4);
+        tree.insert(12);
+        tree.insert(10);
+        tree.insert(14);
+
+        int n1 = 10, n2 = 14;
+        Node t = tree.findLCA(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.key);
+
+        n1 = 14;
+        n2 = 8;
+        t = tree.findLCA(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.key);
+
+        n1 = 10;
+        n2 = 22;
+        t = tree.findLCA(tree.root, n1, n2);
+        System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.key);
+    }
