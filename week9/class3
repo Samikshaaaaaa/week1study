@@ -1,0 +1,39 @@
+package trees;
+class Node1{
+    int data;
+    Node3 left,right;
+    Node1(int data){
+        this.data=data;
+       left=null;
+       right = null;
+    }
+}
+
+public class HeightTree {
+    static int Height(Node3 root){
+        if(root==null)
+            return -1;
+        int lHeight=Height(root.left);
+        int rHeight=Height(root.right);
+        return 1+Math.max(lHeight,rHeight);
+
+    }
+    public static void main(String[] args) {
+       // Node3 rt=new Node3(10);
+       // rt.left=new Node3(12);
+        //rt.left.left= new Node3(13);
+        //rt.left.right=new Node3(5);
+        //rt.right=new Node3(1);
+        //rt.right.left=new Node3(2);
+       Node3 rt = new Node3(1);
+        rt.left = new Node3(2);
+        rt.right = new Node3(3);
+        rt.left.left = new Node3(4);
+        rt.right.left = new Node3(5);
+        rt.right.right = new Node3(6);
+        rt.right.right.right= new Node3(7);
+        rt.right.right.right.right = new Node3(8);
+
+        System.out.println();
+    }
+}
