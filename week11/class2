@@ -1,0 +1,19 @@
+import java.util.Arrays;
+
+public class Example3 {
+    public static int MinCost(int arr[], int n) {
+        int cost = arr[0], result = 0;
+        for (int i = 1; i < n; i++) {
+          cost += arr[i];
+          result+= cost;
+        }
+
+      return result;
+    }
+    public static void main(String[] args) {
+    int arr[]={4,3,2,6};
+    Arrays.sort(arr);
+    int N = 4;
+    System.out.println(MinCost(arr,N));
+    }
+}
