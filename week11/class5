@@ -1,0 +1,25 @@
+package ArraysBasic;
+
+import java.util.ArrayList;
+
+public class DecimalToBinary {
+    public static void main(String[] args) {
+        int Num = 10;
+        ArrayList<Integer> binaryDig = new ArrayList<>();
+
+
+        while (Num > 0) {
+            binaryDig.add(Num % 2);
+            Num = Num / 2;
+        }
+
+
+        System.out.print("Binary representation: ");
+        for (int i = binaryDig.size() - 1; i >= 0; i--) {
+            System.out.print(binaryDig.get(i));
+        }
+    }
+}
+
+
+
