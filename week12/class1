@@ -1,0 +1,54 @@
+package graph;
+
+import java.util.Scanner;
+
+class GraphMatrix {
+    private int[][] adjcencyMatrix;
+    private int vertices;
+
+    GraphMatrix(int vertices){
+        this.vertices=vertices;
+        adjcencyMatrix = new int[vertices][vertices];
+
+    }
+    public void addEdge(int source,int destination){
+        adjcencyMatrix[source][destination]=1;
+
+    }
+    public void DisplayMatrix(){
+        System.out.println("Adjacency Matrix:");
+        for (int i = 0; i < vertices ; i++) {
+            for (int j = 0; j < vertices; j++) {
+                System.out.println(adjcencyMatrix[i][j] + " ");
+
+            }
+            System.out.println();
+
+        }
+
+    }
+}
+public class MainMatrix{
+    private static int edges;
+
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter the number of vertices:");
+        int vertices = scanner.nextInt();
+
+        GraphMatrix graph = new GraphMatrix(vertices);
+
+        System.out.println("Enter the edges (Source and destination):");
+        for (int i = 0; i < edges; i++) {
+            int source = scanner.nextInt();
+            int destination = scanner.nextInt();
+            graph.addEdge(source,destination);
+
+        }
+        graph.DisplayMatrix();
+
+
+
+    }
+
+}
