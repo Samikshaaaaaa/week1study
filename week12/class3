@@ -1,0 +1,43 @@
+public class InsertionSortKPositions {
+
+    public static void insertionSort(int[] arr, int k) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+            // Adjust the position of the key element if it is more than k positions away from its correct position
+            if (i >= k) {
+                int temp = arr[i - k];
+                int index = i - k;
+                while (index < i) {
+                    if (arr[index] > key) {
+                        arr[index + 1] = arr[index];
+                    } else {
+                        break;
+                    }
+                    index++;
+                }
+                arr[index] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3, 1, 5, 2, 4};
+        int k = 2;
+        System.out.println("Original Array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        insertionSort(arr, k);
+        System.out.println("\nSorted Array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
