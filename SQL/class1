@@ -1,0 +1,33 @@
+create database newdb;
+use newdb;
+create table student(
+stId int,
+stName varchar(15),
+stRoll varchar(10),
+phoneNumber char(10),
+fees float
+);
+
+alter table student add branch varchar(13);
+alter table student drop stRoll;
+alter table student rename column stId to Id;
+alter table student modify column  stName char(10);
+
+drop table student;
+truncate table student;
+
+rename table student to newStudent;
+use newdb;
+create table student(
+stId int,
+stName varchar(15),
+stRoll varchar(10),
+phoneNumber char(10),
+fees float
+);
+
+insert into student (stId,stName,stRoll,phoneNumber,fees) values(12,"samiksha","40","8996655","11000"),(13,"himu","41","8996655","11000"),(14,"teju","42","8996600","11000");
+select* from student;
+update student set stName="Disha" where stName= "samiksha";
+delete from student where stName="disha";
+set sql_safe_updates=0;
