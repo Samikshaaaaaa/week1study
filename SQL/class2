@@ -1,0 +1,44 @@
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    city VARCHAR(100)
+);
+
+-- Insert data into Customers table
+INSERT INTO Customers (customer_id, customer_name, city) VALUES
+(1, 'John Doe', 'New York'),
+(2, 'Jane Smith', 'London'),
+(3, 'Sam Green', 'Sydney');
+
+-- Create Orders table
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+-- Insert data into Orders table
+INSERT INTO Orders (order_id, customer_id, order_date) VALUES
+(101, 1, '2023-09-01'),
+(102, 1, '2023-09-10'),
+(103, 3, '2023-09-12'),
+(104, NULL, '2023-09-15');
+
+SELECT*
+From customers
+INNER JOIN orders ON orders.customer_id = customers.customer_id;
+
+SELECT*
+FROM customers
+LEFT JOIN orders ON orders.customer_id = customers.customer_id;
+
+
+SELECT *
+FROM customers
+RIGHT JOIN orders ON orders.customer_id = customers.customer_id;
+
+SELECT *
+FROM customers
+CROSS JOIN orders ON orders.customer_id = customers.customer_id;
+
