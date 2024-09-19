@@ -1,0 +1,43 @@
+use newdb;
+-- crate table of 
+CREATE TABLE Product (
+    Product_id INT PRIMARY KEY,
+    Product_name VARCHAR(100),
+    category_id INT NOT NULL,
+    price decimal
+);
+
+INSERT INTO Product (product_id, Product_name, category_id,price) VALUES
+(1, 'milk', 1,'18'),
+(2, 'Laptop', 2,'23'),
+(3, 'MackBook', 2,'54');
+
+CREATE TABLE Categories1 (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL,
+    description VARCHAR(100)
+   
+);
+INSERT INTO Categories1  (category_id,category_name, description) VALUES
+(1,'Dairy' ,'Abc'),
+(2,'Electronics' , 'EFG'),
+(3,'luxuary' , 'HIJ' );
+
+-- Inner join
+select* from product
+JOIN Categories1 
+ON product.category_id = Categories1.category_id;
+
+-- left joint
+select* from product
+left JOIN categories1  ON product.category_id = categories1.category_id;
+
+select* from product
+Right JOIN categories1  ON product.category_id = categories1.category_id;
+
+select* from product
+CROSS JOIN categories1  ON product.category_id = categories1.category_id;
+
+
+
+
