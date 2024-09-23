@@ -1,0 +1,17 @@
+select* from restaurants;
+
+start transaction;
+select* from restaurants;
+update restaurants set rating =5 where rating =4.4;
+commit;
+
+start transaction;
+select* from restaurants;
+savepoint h1;
+update restaurants set rating =5 where rating =4.4;
+savepoint h2;
+update restaurants set isDelivering ="yes" where isDelivering ="no";
+rollback ;
+
+
+
